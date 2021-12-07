@@ -1,0 +1,31 @@
+:root{
+    --primary-color : #3787b4;
+    --primary-darker : #1a6794;
+    --light-blue : #14ceeb;
+    --light-gray : #efefef;
+    --darker-gray : #c2bebe;
+    --gray-200 :#ddd;
+    --gray-300 : #636363;
+    --gray-400 : #434343;
+}
+
+/* navigation */
+.navigation-dashboard .col-2{
+    background-color: var(--primary-color);
+}
+
+.navigation-dashboard .col-10{
+    background-color: var(--primary-darker);
+}
+
+/* sidebar */
+.sidebar .col-2{
+    position:fixed;
+    left:0;
+    height:100%;
+    background-color: var(--gray-300);
+}
+
+.sidebar .col-10{
+    background-color: var(--light-gray);
+}
