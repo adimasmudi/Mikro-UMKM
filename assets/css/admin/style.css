@@ -5,11 +5,33 @@
     --light-gray : #efefef;
     --darker-gray : #c2bebe;
     --gray-200 :#ddd;
+    --gray-250 : #c4c4c4;
     --gray-300 : #636363;
     --gray-400 : #434343;
 }
+/* class created*/
+.icon{
+    height:30px;
+    width:30px;
+}
+
+.profile-photo{
+    height:40px;
+    width:40px;
+}
+
+.sidebar-active{
+    background-color: var(--gray-400);
+    border-left:5px solid var(--primary-color);
+}
 
 /* navigation */
+.navigation-dashboard{
+    position: fixed;
+    top:0;
+    z-index:4;
+    width:100%;
+}
 .navigation-dashboard .col-2{
     background-color: var(--primary-color);
 }
@@ -19,13 +41,33 @@
 }
 
 /* sidebar */
+
 .sidebar .col-2{
     position:fixed;
     left:0;
+    z-index:3;
+    padding-top:100px;
     height:100%;
     background-color: var(--gray-300);
+    color:white;
+}
+
+.inner-product{
+    background-color: var(--darker-gray);
+    
 }
 
 .sidebar .col-10{
-    background-color: var(--light-gray);
+    background-color: var(--gray-250);
+}
+.sidebar .row.mb-3{
+    height:50px;
+}
+.sidebar .row.mb-3:hover{
+    cursor:pointer;
+    background-color: var(--gray-400);
+}
+
+.box-menu{
+    background-color: white;
 }
