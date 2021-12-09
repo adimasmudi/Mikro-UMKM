@@ -15,6 +15,11 @@
     width:30px;
 }
 
+.action{
+    height:10px;
+    width:10px;
+}
+
 .profile-photo{
     height:40px;
     width:40px;
@@ -70,4 +75,18 @@
 
 .box-menu{
     background-color: white;
+}
+
+/* product list */
+.product-list th:nth-child(2){
+    border-left : 1px solid black;
+    border-right: 1px solid black;
+}
+.product-list td{
+        height:45px;
+}
+
+.product-list td img{
+    height:40px;
+    width:65px;
 }
