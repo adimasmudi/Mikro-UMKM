@@ -121,6 +121,31 @@ footer img{
     width:30px;
 }
 
+/* login */
+
+/* login */
+.image-samping{
+    height:100vh;
+    width:50vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-image: url('../images/login/gambar_samping.jpg');
+}
+
+.underline-input{
+    border:none;
+    border-bottom: 1px solid black;
+}
+
+.underline-input:focus{
+    outline:none;
+}
+
+.login-label{
+    text-decoration: underline;
+    text-decoration-color: #3787b4;
+}
+
 
 /* --------------------css tambahan-------------------- */
 
