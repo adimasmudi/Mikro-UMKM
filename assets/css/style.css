@@ -2,8 +2,8 @@
 
 :root{
     --primary-color : #3787b4;
-    --primary-darker : #1a6794;
-    --light-gray : #efefef;
+    --primary-darker : #1a6794; 
+    --light-gray : #efefef; 
     --darker-gray : #c2bebe;
 }
 
@@ -37,6 +37,7 @@
     border:1px solid var(--primary-color);
     cursor : pointer;
 }
+
 
 
 
@@ -120,25 +121,38 @@ footer img{
     width:30px;
 }
 
-/* login */
-.image-samping{
-    height:100vh;
-    width:50vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-image: url('../images/login/gambar_samping.jpg');
+
+/* --------------------css tambahan-------------------- */
+
+.bttn-red{
+    background-color: #ef4646;
+    color : #fff;
 }
 
-.underline-input{
-    border:none;
-    border-bottom: 1px solid black;
+.bttn-red:hover{
+    background-color: #ad3c3c;
+    color : #fff;
+    cursor : pointer;
 }
 
-.underline-input:focus{
-    outline:none;
+.card{
+    padding: 0;
 }
 
-.login-label{
-    text-decoration: underline;
-    text-decoration-color: #3787b4;
+.card-body{
+    margin: 0;
+}
+
+.center{
+    margin: auto;
+}
+
+.red-card{
+    background-color: #ef4646;
+    color: #fff;
+}
+
+.blue-card{
+    background-color: #3787b4;
+    color: #fff;
 }
