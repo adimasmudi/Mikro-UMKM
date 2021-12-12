@@ -1,0 +1,169 @@
+:root{
+    --primary-color : #3787b4;
+    --primary-darker : #1a6794;
+    --light-blue : #14ceeb;
+    --light-gray : #efefef;
+    --darker-gray : #c2bebe;
+    --gray-200 :#ddd;
+    --gray-250 : #c4c4c4;
+    --gray-300 : #636363;
+    --gray-400 : #434343;
+}
+/* class created*/
+.icon{
+    height:30px;
+    width:30px;
+}
+
+.action{
+    height:10px;
+    width:10px;
+}
+
+.profile-photo{
+    height:30px;
+    width:30px;
+}
+
+.sidebar-active{
+    background-color: var(--gray-400);
+    border-left:5px solid var(--primary-color);
+}
+
+/* navigation */
+.navigation-dashboard{
+    position: fixed;
+    top:0;
+    z-index:4;
+    width:100%;
+}
+.navigation-dashboard .col-2{
+    background-color: var(--primary-color);
+}
+
+.navigation-dashboard .col-10{
+    background-color: var(--primary-darker);
+}
+
+/* sidebar */
+
+.sidebar .col-2{
+    position:fixed;
+    left:0;
+    z-index:3;
+    padding-top:100px;
+    height:100%;
+    background-color: var(--gray-300);
+    color:white;
+}
+
+.inner-product{
+    background-color: var(--darker-gray);
+    
+}
+
+.sidebar .col-10{
+    background-color: var(--gray-200);
+}
+.sidebar .row.mb-3{
+    height:50px;
+}
+.sidebar .row.mb-3:hover{
+    cursor:pointer;
+    background-color: var(--gray-400);
+}
+
+.box-menu{
+    background-color: white;
+}
+
+/* product list */
+.product-list th:nth-child(2){
+    border-left : 1px solid black;
+    border-right: 1px solid black;
+}
+.product-list td{
+        height:45px;
+}
+
+.product-list td img{
+    height:40px;
+    width:65px;
+}
+
+/* ------------ tambahan ------------ */
+.grey-border{
+    border-top: 6pt solid #c4c4c4 ;
+}
+
+.red-border{
+    border-top: 6pt solid #ef4646 ;
+}
+
+.blue-border{
+    border-top: 6pt solid #3787b4 ;
+}
+
+.bg-blue{
+    background-color: #14cee8;
+}
+
+.bg-red{
+    background-color: #ef4646;
+}
+
+.bg-yellow{
+    background-color: #ffcb46;
+}
+
+.bg-green{
+    background-color: #43bf5e;
+}
+
+.user-photo{
+    height:35px;
+    width:35px; 
+}
+
+.product-photo{
+    height: 40px;
+    width:60px; 
+}
+
+.bttn-green{
+    background-color: #43bf5e;
+    color : #fff;
+}
+
+.bttn-green:hover{
+    background-color: #2e9444;
+    color : #fff;
+    cursor : pointer;
+}
+
+.bttn-red{
+    background-color: #ef4646;
+    color : #fff;
+}
+
+.bttn-red:hover{
+    background-color: #ad3c3c;
+    color : #fff;
+    cursor : pointer;
+}
+
+.bttn-primary{
+    background-color: var(--primary-color);
+    color : #ffffff;
+}
+
+.bttn-primary:hover{
+    background-color: var(--primary-darker);
+    color : #ffffff;
+    cursor: pointer;
+}
+
+.center{
+    margin: auto;
+}
+
