@@ -10,25 +10,23 @@
 
     <link rel="stylesheet" href="../../assets/css/admin/style.css">
 
-    <title>Dashboard</title>
+    <title>Dashboard | User</title>
   </head>
   <body>
     <div class="container-fluid">
-        <div class="row navigation-dashboard">
+        <div class="row navigation-dashboard align-items-center">
             <div class="col-2">
-                <h2 class="text-center text-light">Mikro UMKM</h2>
+                <h3 class="text-center text-light">Mikro UMKM</h3>
             </div>
             <div class="col-10 d-flex justify-content-end">
-                <div class="d-flex flex-row align-items-center justify-content-evenly" style="width:200px;height:40px;line-height:40px;">
-                    <div class="d-flex flex-row">
-                        <img src="../../assets/images/dashboard/profile.png" alt="admin-profile" class="profile-photo me-3">
-                        <span class="text-light">admin</span>
-                    </div>
+                <div class="d-flex flex-row align-items-center justify-content-evenly" style="width:200px;height:42px;line-height:42px;">
+                    <img src="../../assets/images/dashboard/profile.png" alt="admin-profile" class="profile-photo me-3">
+                    <span class="text-light">Admin</span>
                     <img src="../../assets/images/icons/dashboard/Mail.png" alt="mail" class="icon">
                 </div>
             </div>
         </div>
-        <div class="sidebar row">
+        <div class="sidebar row ">
             <div class="col-2">
                 <div class="container-fluid pt-5" style="padding:0">
                     <div class="row mb-3 ">
@@ -37,36 +35,16 @@
                             <span>Dashboard</span>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row mb-3">
                         <div class="col d-flex align-items-center sidebar-active">
                             <img src="../../assets/images/icons/dashboard/Box.png" alt="Product" class="icon me-3">
                             <span>Produk</span>
-                            
-                        </div>
-                    </div>
-                    <div class="row inner-product">
-                        <div class="col ms-3">
-                            <img src="../../assets/images/icons/product/Add.png" alt="Add new" class="icon me-3">
-                            <span>Add new</span>
-                        </div>
-                    </div>
-                    <div class="row inner-product">
-                        <div class="col ms-3">
-                            <img src="../../assets/images/icons/product/Bulleted List.png" alt="Product list" class="icon me-3">
-                            <span>Product list</span>
-                        </div>
-                    </div>
-                    <div class="row inner-product">
-                        <div class="col ms-3">
-                            <img src="../../assets/images/icons/product/Category.png" alt="Kategori" class="icon me-3">
-                            <span>Kategori</span>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
-                            <img src="../../assets/images/icons/dashboard/User Male.png" alt="pengguna" class="icon me-3">
+                            <img src="../../assets/images/icons/dashboard/User Male.png" alt="Pengguna" class="icon me-3">
                             <span>Pengguna</span>
-                            
                         </div>
                     </div>
                     <div class="row mb-3">
@@ -75,67 +53,71 @@
                             <span>Logout</span>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-10 pt-5 pb-5 pe-5 ps-5" style="margin-left:250px;height:100vh">
-                <div class="row pe-5 ps-5 mt-5">
-                    <h3 class="">Add new</h3>
-                </div>
-                <div class="row  pe-5 ps-5 mt-2">
-                    <div class="card">
-                        <h5 class="card-header">Nama Produk</h5>
-                        <div class="card-body d-flex flex-row" style="height:10vh">
-                            <input type="text" name="nama_produk" class="form-control me-4" placeholder="masukkan nama produk">
-                            <input type="submit" name="publish" class="btn btn-primary" value="publish">
+                    <div class="row mb-3">
+                        <div class="col d-flex align-items-center">
+                            <img src="../../assets/images/icons/dashboard/Bookmark.png" alt="Feedback" class="icon me-3">
+                            <span>Feedback</span>
                         </div>
                     </div>
                 </div>
-                <div class="row ps-5 pe-5 mt-2">
-                    <div class="col-8">
-                        <div class="card">
-                            <h5 class="card-header">Keterangan</h5>
-                            <div class="card-body d-flex flex-row" style="height:30vh">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="keterangan" id="floatingTextarea2" style="height: 100px;width:30vw"></textarea>
-                                    <label for="floatingTextarea2">Keterangan</label>
-                                  </div>
+            </div>
+            <div class="col-10 pt-5 pb-5 pe-4 ps-4 align-items-center" style="margin-left:228px;">
+                <div class="row pe-5 ps-5 mt-3 mb-3">
+                    <h3 class="">Pengguna</h3>
+                </div>
+                <div class="row pe-5 ps-5">
+                    <div class="col">
+                        <div class="card grey-border">
+                            <h4 class="card-header ">Nama Produk</h4>
+                            <div class="card-body">
+                                <form class="row g-3">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Nama Produk UMKM">
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn bttn-primary mb-3">Publish</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row me-5 ps-5 pt-3">
+                    <div class="col">
+                        <div class="card red-border">
+                            <h4 class="card-header">Keterangan</h4>
+                            <div class="card-body" style="height: 40vh;">
                             </div>
                         </div>
                     </div>
                     <div class="col-4">
                         <div class="row">
-                            <div class="col">
-                                <div class="card">
-                                    <h5 class="card-header">harga Produk</h5>
-                                    <div class="card-body d-flex flex-row" style="height:10vh">
-                                        <input type="text" name="harga_produk" class="form-control me-4" placeholder="masukkan harga produk">
-                                        
-                                    </div>
+                            <div class="card blue-border">
+                                <h4 class="card-header">Harga Produk</h4>
+                                <div class="card-body">
+                                    <form>
+                                        <div class="col">
+                                            <input type="text" class="form-control" placeholder="Masukkan Harga Produk ">
+                                        </div>
+                                    </form>
                                 </div>
-                            </div>
+                            </div>        
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <div class="card">
-                                    <h5 class="card-header">kategori</h5>
-                                    <div class="card-body" style="height:15vh">
-                                        <div class="dropdown">
-                                            <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-                                              kategori
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                              <li><a class="dropdown-item active" href="#">Action</a></li>
-                                              <li><a class="dropdown-item" href="#">Another action</a></li>
-                                              <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                              <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                            </ul>
-                                          </div>
-                                          <div>
-                                              <input type="file" class="form-control">
-                                          </div>
-                                    </div>
+                        <div class="row pt-2">
+                            <div class="card blue-border">
+                                <h4 class="card-header">Kategori</h4>
+                                <div class="card-body">
+                                    <label for="select-category" class="form-label">Kategori</label>
+                                    <select class="form-select" id="select-category">
+                                        <option disabled selected>--Kategori--</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <label for="import-file" class="form-label">Gambar</label>
+                                    <input type="file" class="form-control-file" id="import-file">
                                 </div>
-                            </div>
+                            </div>        
                         </div>
                     </div>
                 </div>
