@@ -21,8 +21,8 @@
 }
 
 .profile-photo{
-    height:40px;
-    width:40px;
+    height:30px;
+    width:30px;
 }
 
 .sidebar-active{
@@ -63,7 +63,7 @@
 }
 
 .sidebar .col-10{
-    background-color: var(--gray-250);
+    background-color: var(--gray-200);
 }
 .sidebar .row.mb-3{
     height:50px;
@@ -90,3 +90,80 @@
     height:40px;
     width:65px;
 }
+
+/* ------------ tambahan ------------ */
+.grey-border{
+    border-top: 6pt solid #c4c4c4 ;
+}
+
+.red-border{
+    border-top: 6pt solid #ef4646 ;
+}
+
+.blue-border{
+    border-top: 6pt solid #3787b4 ;
+}
+
+.bg-blue{
+    background-color: #14cee8;
+}
+
+.bg-red{
+    background-color: #ef4646;
+}
+
+.bg-yellow{
+    background-color: #ffcb46;
+}
+
+.bg-green{
+    background-color: #43bf5e;
+}
+
+.user-photo{
+    height:35px;
+    width:35px; 
+}
+
+.product-photo{
+    height: 40px;
+    width:60px; 
+}
+
+.bttn-green{
+    background-color: #43bf5e;
+    color : #fff;
+}
+
+.bttn-green:hover{
+    background-color: #2e9444;
+    color : #fff;
+    cursor : pointer;
+}
+
+.bttn-red{
+    background-color: #ef4646;
+    color : #fff;
+}
+
+.bttn-red:hover{
+    background-color: #ad3c3c;
+    color : #fff;
+    cursor : pointer;
+}
+
+.bttn-primary{
+    background-color: var(--primary-color);
+    color : #ffffff;
+}
+
+.bttn-primary:hover{
+    background-color: var(--primary-darker);
+    color : #ffffff;
+    cursor: pointer;
+}
+
+.center{
+    margin: auto;
+}
+
