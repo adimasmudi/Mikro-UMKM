@@ -10,7 +10,7 @@
 
     <link rel="stylesheet" href="../../assets/css/admin/style.css">
 
-    <title>Dashboard</title>
+    <title>Feedback</title>
   </head>
   <body>
     <div class="container-fluid">
@@ -34,53 +34,73 @@
                     <div class="row mb-3 ">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Home.png" alt="Dashboard" class="icon me-3">
-                            <span>Dashboard</span>
+                            <a href="dashboard.php"><span>Dashboard</span></a>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Box.png" alt="Product" class="icon me-3">
-                            <span>Produk</span>
+                            <a href="product_list.php"><span>Produk</span></a>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col d-flex align-items-center">
+                            <img src="../../assets/images/icons/dashboard/User Male.png" alt="Pengguna" class="icon me-3">
+                            <a href="pengguna.php"><span>Pengguna</span></a>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center sidebar-active">
-                            <img src="../../assets/images/icons/dashboard/User Male.png" alt="Pengguna" class="icon me-3">
-                            <span>Pengguna</span>
+                            <img src="../../assets/images/icons/dashboard/Bookmark.png" alt="Feedback" class="icon me-3">
+                            <a href="feedback.php"><span>Feedback</span></a>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Logout.png" alt="Logout" class="icon me-3">
-                            <span>Logout</span>
+                            <a href="../logout.php"><span>Logout</span></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-10 pt-5 pb-5 pe-5 ps-5" style="margin-left:250px;height:100vh">
                 <div class="row pe-5 ps-5 mt-5">
-                    <h3 class="">Pengguna</h3>
+                    <h3 class="">Data Feedback</h3>
                 </div>
-                <div class="row pe-5 ps-5">
-                    <div class="card">
-                        <h5 class="card-header">Toko Tunggal</h5>
-                        <div class="card-body d-flex flex-row" style="height:50vh">
-                            <div class="container">
-                                <div class="row" style="border:1px solid black;">
-                                    <div class="col-6">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div class="col-6">
-                                        <h1>Deskripsi Toko</h1>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis perspiciatis quis animi excepturi tenetur accusantium quibusdam omnis saepe, hic autem? Id nisi laudantium reprehenderit atque dolores obcaecati! Tempora, dolorum hic!</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-8"></div>
-                                    <div class="col-4">
-                                        <div>
-                                            <button>Edit</button>
-                                            <button>hapus</button>
+                
+                <div class="row mt-5 pe-5 ps-5">
+                    <div class="col">
+                        <div class="card">
+                            
+                            <div class="card-body" style="height:30vh">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-4">
+                                             <!-- Button trigger modal -->
+                                             <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height:40px;width:180px">
+                                                Tambah Feedback
+                                            </button>
+                                            
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Feedback</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <form action="" method="POST">
+                                                        <div class="modal-body">
+                                                            <input type="text" class="form-control" placeholder="kategori" name="kategori">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                            <input type="submit" class="btn btn-primary" name="simpan" value="simpan">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +108,6 @@
                         </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </div>

@@ -1,3 +1,24 @@
+<?php
+
+require_once('../config.php');
+require_once('../auth.php');
+
+if(isset($_POST["simpan"])){
+    $kategori = filter_input(INPUT_POST, 'kategori', FILTER_SANITIZE_STRING);
+
+    $stmt = $db->prepare("INSERT INTO kategori (Nama_kategori) VALUES (:nama_kategori)");
+
+    $saved = $stmt->execute([
+        ":nama_kategori" => $kategori
+    ]);
+
+    if($saved) header('Location:kategori.php');
+
+}
+
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,45 +55,49 @@
                     <div class="row mb-3 ">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Home.png" alt="Dashboard" class="icon me-3">
-                            <span>Dashboard</span>
+                            <a href="dashboard.php"><span>Dashboard</span></a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col d-flex align-items-center sidebar-active">
                             <img src="../../assets/images/icons/dashboard/Box.png" alt="Product" class="icon me-3">
-                            <span>Produk</span>
-                            
+                            <a href="product_list.php"><span>Produk</span></a>
                         </div>
                     </div>
                     <div class="row inner-product">
-                        <div class="col ms-3">
-                            <img src="../../assets/images/icons/product/Add.png" alt="Add new" class="icon me-3">
-                            <span>Add new</span>
-                        </div>
-                    </div>
-                    <div class="row inner-product">
-                        <div class="col ms-3">
-                            <img src="../../assets/images/icons/product/Bulleted List.png" alt="Product list" class="icon me-3">
-                            <span>Product list</span>
-                        </div>
-                    </div>
-                    <div class="row inner-product">
-                        <div class="col ms-3">
-                            <img src="../../assets/images/icons/product/Category.png" alt="Kategori" class="icon me-3">
-                            <span>Kategori</span>
+                      <div class="col ms-3">
+                          <img src="../../assets/images/icons/product/Add.png" alt="Add new" class="icon me-3">
+                          <a href="add_new.php"><span>Add new</span></a>
+                      </div>
+                  </div>
+                  <div class="row inner-product">
+                      <div class="col ms-3">
+                          <img src="../../assets/images/icons/product/Bulleted List.png" alt="Product list" class="icon me-3">
+                          <a href="product_list.php"><span>Product list</span></a>
+                      </div>
+                  </div>
+                  <div class="row inner-product">
+                      <div class="col ms-3">
+                          <img src="../../assets/images/icons/product/Category.png" alt="Kategori" class="icon me-3">
+                          <a href="kategori.php"><span>Kategori</span></a>
+                      </div>
+                  </div>
+                    <div class="row mb-3">
+                        <div class="col d-flex align-items-center">
+                            <img src="../../assets/images/icons/dashboard/User Male.png" alt="Pengguna" class="icon me-3">
+                            <a href="pengguna.php"><span>Pengguna</span></a>
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <div class="col d-flex align-items-center">
-                            <img src="../../assets/images/icons/dashboard/User Male.png" alt="pengguna" class="icon me-3">
-                            <span>Pengguna</span>
-                            
-                        </div>
-                    </div>
+                      <div class="col d-flex align-items-center">
+                          <img src="../../assets/images/icons/dashboard/Bookmark.png" alt="Feedback" class="icon me-3">
+                          <a href="feedback.php"><span>Feedback</span></a>
+                      </div>
+                  </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Logout.png" alt="Logout" class="icon me-3">
-                            <span>Logout</span>
+                            <a href="../logout.php"><span>Logout</span></a>
                         </div>
                     </div>
                 </div>
@@ -81,6 +106,7 @@
                 <div class="row pe-5 ps-5 mt-5">
                     <h3 class="">Kategori</h3>
                 </div>
+                
                 <div class="row pe-5 ps-5 pt-2">
                     <div class="col ">
                         <div class="card">
@@ -89,7 +115,31 @@
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-4">
-                                            <a href="#" class="btn btn-success" style="height:40px; width:180px"><img src="../../assets/images/icons/product/Add Book.png" alt="Add"> Tambah Kategori</a>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height:40px;width:180px">
+                                                <img src="../../assets/images/icons/product/Add Book.png" alt="Add"> Tambah Kategori
+                                            </button>
+                                            
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <form action="" method="POST">
+                                                        <div class="modal-body">
+                                                            <input type="text" class="form-control" placeholder="kategori" name="kategori">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                            <input type="submit" class="btn btn-primary" name="simpan" value="simpan">
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="col-8"></div>
                                     </div>
@@ -105,24 +155,22 @@
                                               </tr>
                                             </thead>
                                             <tbody>
+                                                <?php
+                                                    // fetch kategori
+                                                    $get_kategori = $db->query("SELECT * FROM kategori");
+                                                    $data_kategori = $get_kategori->fetchAll(PDO::FETCH_ASSOC);
+                                                    $number = 1;
+                                                    
+                                                    foreach($data_kategori as $kategori){
+                                                        
+                                                ?>
                                               <tr>
                                                
-                                                <td>1</td>
-                                                <td>Produk</td>
+                                                <td><?php echo $number; ?></td>
+                                                <td><?php echo $kategori["Nama_kategori"]; ?></td>
                                                 <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
                                               </tr>
-                                              <tr>
-    
-                                                <td>2</td>
-                                                <td>Teknologi</td>
-                                                <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
-                                              </tr>
-                                              <tr>
-                                                
-                                                <td>3</td>
-                                                <td>Kerajinan</td>
-                                                <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
-                                              </tr>
+                                            <?php $number++; } ?>
                                             </tbody>
                                           </table>
                                     </div>

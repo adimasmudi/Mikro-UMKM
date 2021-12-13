@@ -32,107 +32,69 @@
             <div class="col-2">
                 <div class="container-fluid pt-5" style="padding:0">
                     <div class="row mb-3 ">
-                        <div class="col d-flex align-items-center sidebar-active">
+                        <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Home.png" alt="Dashboard" class="icon me-3">
-                            <span>Dashboard</span>
+                            <a href="dashboard.php"><span>Dashboard</span></a>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Box.png" alt="Product" class="icon me-3">
-                            <span>Produk</span>
+                            <a href="product_list.php"><span>Dashboard</span></a>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col d-flex align-items-center sidebar-active">
+                            <img src="../../assets/images/icons/dashboard/User Male.png" alt="Pengguna" class="icon me-3">
+                            <a href="pengguna.php"><span>Dashboard</span></a>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
-                            <img src="../../assets/images/icons/dashboard/User Male.png" alt="Pengguna" class="icon me-3">
-                            <span>Pengguna</span>
+                            <img src="../../assets/images/icons/dashboard/Bookmark.png" alt="Feedback" class="icon me-3">
+                            <a href="feedback.php"><span>Feedback</span></a>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Logout.png" alt="Logout" class="icon me-3">
-                            <span>Logout</span>
+                            <a href="../logout.php"><span>Logout</span></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-10 pt-5 pb-5 pe-5 ps-5" style="margin-left:250px;height:100vh">
                 <div class="row pe-5 ps-5 mt-5">
-                    <h3 class="">Dashboard</h3>
+                    <h3 class="">Pengguna</h3>
                 </div>
                 <div class="row pe-5 ps-5">
-                    <div class="col-3">
-                        <div class="box-menu">
-                            <div class="container" style="padding:0">
-                                <div class="row">
-                                    <div class="col-4 d-flex justify-content-center align-items-center bg-primary">
-                                        <img src="../../assets/images/icons/dashboard/Product.png" alt="product">
+                    <div class="card">
+                        <h5 class="card-header">Toko Tunggal</h5>
+                        <div class="card-body d-flex flex-row" style="height:50vh">
+                            <div class="container">
+                                <div class="row" style="border:1px solid black;">
+                                    <div class="col-6">
+                                        <img src="" alt="">
                                     </div>
-                                    <div class="col-8">
-                                        <p>Produk barang</p>
-                                        <p>7</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="box-menu">
-                            <div class="container" style="padding:0">
-                                <div class="row">
-                                    <div class="col-4 d-flex justify-content-center align-items-center bg-danger">
-                                        <img src="../../assets/images/icons/dashboard/Shopping Bag.png" alt="bag">
-                                    </div>
-                                    <div class="col-8">
-                                        <p>Kerajinan</p>
-                                        <p>4</p>
+                                    <div class="col-6">
+                                        <h1>Deskripsi Toko</h1>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis perspiciatis quis animi excepturi tenetur accusantium quibusdam omnis saepe, hic autem? Id nisi laudantium reprehenderit atque dolores obcaecati! Tempora, dolorum hic!</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="box-menu">
-                            <div class="container" style="padding:0">
                                 <div class="row">
-                                    <div class="col-4 d-flex justify-content-center align-items-center bg-warning">
-                                        <img src="../../assets/images/icons/dashboard/Monitor.png" alt="Monitor">
-                                    </div>
-                                    <div class="col-8">
-                                        <p>Teknologi</p>
-                                        <p>2</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="box-menu">
-                            <div class="container" style="padding:0">
-                                <div class="row">
-                                    <div class="col-4 d-flex justify-content-center align-items-center bg-success">
-                                        <img src="../../assets/images/icons/dashboard/Clothes.png" alt="clothes">
-                                    </div>
-                                    <div class="col-8">
-                                        <p>Fashion</p>
-                                        <p>8</p>
+                                    <div class="col-8"></div>
+                                    <div class="col-4">
+                                        <div>
+                                            <button>Edit</button>
+                                            <button>hapus</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row mt-5 pe-5 ps-5">
-                    <div class="col">
-                        <div class="card">
-                            <h5 class="card-header">Pengunjung Bulan ini</h5>
-                            <div class="card-body" style="height:30vh">
-                              
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>

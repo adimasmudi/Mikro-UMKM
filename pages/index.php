@@ -1,3 +1,12 @@
+<?php
+
+require_once('config.php');
+
+$produk = $db->query("SELECT * FROM produk");
+$product_arr = $produk->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,16 +32,16 @@
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav" style="margin-left:70%">
                   <li class="nav-item">
-                    <a class="nav-link nav-link__active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link nav-link__active" aria-current="page" href="index.html">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Daftar</a>
+                    <a class="nav-link" aria-current="page" href="#daftar">Daftar</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Produk</a>
+                    <a class="nav-link" aria-current="page" href="#produk">Produk</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Tentang</a>
+                    <a class="nav-link" aria-current="page" href="#tentang">Tentang</a>
                   </li>
                 </ul>
               </div>
@@ -43,8 +52,8 @@
             <h1 class="pb-3">Usaha Mikro Kecil dan Menengah</h1>
             <p class="pb-3">Usaha perdagangan yang dikelola oleh badan usaha atau perorangan yang merujuk pada usaha ekonomi produktif</p>
             <div>
-                <button class="btn bttn-primary">Daftar</button>
-                <button class="btn bttn-secondary">login</button>
+                <a class="btn bttn-primary" id="daftar" href="daftar.php">Daftar</a>
+                <a class="btn bttn-secondary" href="login.php">login</a>
             </div>
         </section>
     </header>
@@ -53,85 +62,71 @@
         <div class="container-md">
             <div class="row">
                 <div class="col">
-                    <h2 class="text-center">Produk Umum</h2>
+                    <h2 class="text-center" id="produk">Produk Umum</h2>
                     <p class="text-center">Beberapa produk UMKM</p>
                 </div>
             </div>
             <div class="row justify-content-evenly">
+                <?php
+                    foreach($product_arr as $product){
+                ?>
                 <div class="col-md-3">
                     <div class="card mb-4">
-                        <img src="../assets/images/homepage/sofa.png" alt="sofa" class="img-thumbnail">
-                        <h4 class="text-center">Sofa</h4>
-                        <span class="text-center">produk</span>
-                        <span class="text-center">Harga Rp. 500.000</span>
+                        <img
+                         src="
+                         <?php
+                            $old_path = $product["Gambar_produk"];
+                            $new_path = array_slice(explode("/",$old_path),1,sizeof(explode("/",$old_path))-1);
+                            echo join("/",$new_path);
+                            
+                         ?>
+                         " 
+                         alt="<?php echo $product["Nama_produk"]; ?>" class="img-thumbnail" style="height:240px;width:310px;"
+                         >
+                        <a href="detail_produk.php?<?php echo $product["ID_produk"]; ?>" style="text-decoration:none;color : black;">
+                            <h4 class="text-center"><?php echo $product["Nama_produk"]; ?></h4>
+                        </a>
+                        <span class="text-center">
+                            <?php
+                                $get_kategori = $db->query("SELECT * FROM kategori WHERE ID_kategori=".$product["ID_kategori"]);
+                                $kategori = $get_kategori->fetch(PDO::FETCH_ASSOC);
+
+                                echo $kategori["Nama_kategori"];
+                            
+                            
+                            ?>
+                        </span>
+                        <span class="text-center">Harga Rp. <?php echo number_format($product["Harga_produk"]); ?></span>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="card mb-4">
-                        <img src="../assets/images/homepage/Tas anyaman.jpg" alt="tas anyaman" class="img-thumbnail">
-                        <h4 class="text-center">Tas Anyam</h4>
-                        <span class="text-center">produk</span>
-                        <span class="text-center">Harga Rp. 35.000</span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-4">
-                        <img src="../assets/images/homepage/mangkuk berdiri anyaman.jpg" alt="mangkuk berdiri anyaman" class="img-thumbnail">
-                        <h4 class="text-center">Mangkuk berdiri anyam</h4>
-                        <span class="text-center">produk</span>
-                        <span class="text-center">Harga Rp. 500.000</span>
-                    </div>
-                </div>  
+                <?php } ?>
             </div>
-            <div class="row justify-content-evenly">
-                <div class="col-md-3">
-                    <div class="card mb-4">
-                        <img src="../assets/images/homepage/furnitur alam.jpg" alt="furnitur" class="img-thumbnail">
-                        <h4 class="text-center">Furnitur Alam</h4>
-                        <span class="text-center">produk</span>
-                        <span class="text-center">Harga Rp. 55.000</span>
-                    </div> 
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-4">
-                        <img src="../assets/images/homepage/kebutuhan rumah.png" alt="kebutuhan rumah" class="img-thumbnail">
-                        <h4 class="text-center">Kebutuhan Rumah</h4>
-                        <span class="text-center">produk</span>
-                        <span class="text-center">Harga Rp. 50.000</span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-4">
-                        <img src="../assets/images/homepage/Batik jogja.jpg" alt="batik jogja" class="img-thumbnail">
-                        <h4 class="text-center">Batik Jogja</h4>
-                        <span class="text-center">produk</span>
-                        <span class="text-center">Harga Rp. 50.000</span>
-                    </div>
-                </div>
-            </div>
-            <div class="row justify-content-evenly">
-                <div class="col-md-3">
-                    <div class="card mb-4">
-                        <img src="../assets/images/homepage/anyaman campuran.jpg" alt="anyaman campuran" class="img-thumbnail">
-                        <h4 class="text-center">Anyaman Campuran</h4>
-                        <span class="text-center">produk</span>
-                        <span class="text-center">Harga Rp. 100.000</span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-4">
-                        <img src="../assets/images/homepage/kotak make up.jpg" alt="kotak make up" class="img-thumbnail">
-                        <h4 class="text-center">Kotak Make up</h4>
-                        <span class="text-center">produk</span>
-                        <span class="text-center">Harga Rp. 40.000</span>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card mb-4">
-                        <img src="../assets/images/homepage/produk eceng gondog.jpg" alt="produk eceng gondok" class="img-thumbnail">
-                        <h4 class="text-center">Title</h4>
-                        <span class="text-center">produk</span>
-                        <span class="text-center">Harga Rp. 500.000</span>
+            <div class="row mb-5">
+                <div class="col d-flex justify-content-center">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn bttn-primary mb-4" data-bs-toggle="modal" data-bs-target="#exampleModal" style="height:40px;width:180px">
+                        Lihat semua
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="" method="POST">
+                                    <div class="modal-body">
+                                        <input type="text" class="form-control" placeholder="kategori" name="kategori">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        <input type="submit" class="btn btn-primary" name="simpan" value="simpan">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,8 +135,8 @@
 
     </section>
 
-    <section class="container-md tentang">
-        <h2 class="text-center">Tentang</h2>
+    <section class="container-md tentang mt-5">
+        <h2 class="text-center" id="tentang">Tentang</h2>
         <p class="text-center">Website ini dibuat untuk memenuhi tugas project akhir sistem informasi</p>
 
         <div class="row ms-auto justify-content-center mb-5">

@@ -1,3 +1,9 @@
+<?php
+
+require_once('../config.php');
+require_once('../auth.php');
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -32,33 +38,52 @@
                     <div class="row mb-3 ">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Home.png" alt="Dashboard" class="icon me-3">
-                            <span>Dashboard</span>
+                            <a href="dashboard.php"><span>Dashboard</span></a>
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    <div class="row">
                         <div class="col d-flex align-items-center sidebar-active">
                             <img src="../../assets/images/icons/dashboard/Box.png" alt="Product" class="icon me-3">
-                            <span>Produk</span>
+                            <a href="product_list.php"><span>Produk</span></a>
                         </div>
                     </div>
+                    <div class="row inner-product">
+                      <div class="col ms-3">
+                          <img src="../../assets/images/icons/product/Add.png" alt="Add new" class="icon me-3">
+                          <a href="add_new.php"><span>Add new</span></a>
+                      </div>
+                  </div>
+                  <div class="row inner-product">
+                      <div class="col ms-3">
+                          <img src="../../assets/images/icons/product/Bulleted List.png" alt="Product list" class="icon me-3">
+                          <a href="product_list.php"><span>Product list</span></a>
+                      </div>
+                  </div>
+                  <div class="row inner-product">
+                      <div class="col ms-3">
+                          <img src="../../assets/images/icons/product/Category.png" alt="Kategori" class="icon me-3">
+                          <a href="kategori.php"><span>Kategori</span></a>
+                      </div>
+                  </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/User Male.png" alt="Pengguna" class="icon me-3">
-                            <span>Pengguna</span>
+                            <a href="pengguna.php"><span>Pengguna</span></a>
                         </div>
                     </div>
+                    <div class="row mb-3">
+                      <div class="col d-flex align-items-center">
+                          <img src="../../assets/images/icons/dashboard/Bookmark.png" alt="Feedback" class="icon me-3">
+                          <a href="feedback.php"><span>Feedback</span></a>
+                      </div>
+                  </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Logout.png" alt="Logout" class="icon me-3">
-                            <span>Logout</span>
+                            <a href="../logout.php"><span>Logout</span></a>
                         </div>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col d-flex align-items-center">
-                            <img src="../../assets/images/icons/dashboard/Bookmark.png" alt="Feedback" class="icon me-3">
-                            <span>Feedback</span>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
             <div class="col-10 pt-5 pb-5 pe-4 ps-4 align-items-center" style="margin-left:228px;height:100vh">
@@ -79,71 +104,37 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td><img src="../../assets/images/produk/sofa.jpg" alt="produk"  class="product-photo"></td>
-                            <td>Sofa</td>
-                            <td>Rp. 500.000</td>
-                            <td>10-01-2021</td>
-                            <td>Toko Tunggal</td>
-                            <td>0812345678</td>
-                            <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
-                          </tr>
-                          <tr>
-                            <td><img src="../../assets/images/produk/tas.jpg" alt="produk" class="product-photo"></td>
-                            <td>Tas Anyam</td>
-                            <td>Rp. 500.000</td>
-                            <td>10-01-2021</td>
-                            <td>Toko Tunggal</td>
-                            <td>0812345678</td>
-                            <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
-                          </tr>
-                          <tr>
-                            <td><img src="../../assets/images/produk/mangkuk.jpg" alt="produk" class="product-photo"></td>
-                            <td>Mangkuk Berdiri Ayam</td>
-                            <td>Rp. 500.000</td>
-                            <td>10-01-2021</td>
-                            <td>Toko Tunggal</td>
-                            <td>0812345678</td>
-                            <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
+                          <?php
+                          
+                            $produk = $db->query("SELECT * FROM produk");
+                            $product_arr = $produk->fetchAll(PDO::FETCH_ASSOC);
 
-                          </tr>
-                          <tr>
-                            <td><img src="../../assets/images/produk/batik.jpg" alt="produk" class="product-photo"></td>
-                            <td>Batik Jogja</td>
-                            <td>Rp. 500.000</td>
-                            <td>10-01-2021</td>
-                            <td>Toko Tunggal</td>
-                            <td>0812345678</td>
-                            <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
 
-                          </tr>
+                            foreach($product_arr as $product){
+
+                            
+                          
+                          
+                          
+                          ?>
                           <tr>
-                            <td><img src="../../assets/images/produk/kotak.png" alt="produk" class="product-photo"></td>
-                            <td>Kotak Make Up</td>
-                            <td>Rp. 500.000</td>
-                            <td>10-01-2021</td>
-                            <td>Toko Tunggal</td>
-                            <td>0812345678</td>
+                            <td><img src="<?php echo $product["Gambar_produk"]; ?>" alt="<?php echo $product["Nama_produk"]; ?>"  class="product-photo"></td>
+                            <td><?php echo $product["Nama_produk"]; ?></td>
+                            <td><?php echo $product["Harga_produk"]; ?></td>
+                            <td><?php echo $product["Tgl_tambah"]; ?></td>
+                            <td>
+                              <?php
+                                $toko = $db->query("SELECT * FROM toko WHERE ID_toko=".$product["ID_toko"]);
+                                $the_toko = $toko->fetch(PDO::FETCH_ASSOC);
+                                echo $the_toko["Nama_toko"];
+
+                              ?>
+                            </td>
+                            <td><?php echo $the_toko["No_tlp_toko"]; ?></td>
                             <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
                           </tr>
-                          <tr>
-                            <td><img src="../../assets/images/produk/furnitur.png" alt="produk" class="product-photo"></td>
-                            <td>Furnitur Alam</td>
-                            <td>Rp. 500.000</td>
-                            <td>10-01-2021</td>
-                            <td>Toko Tunggal</td>
-                            <td>0812345678</td>
-                            <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
-                          </tr>
-                          <tr>
-                            <td><img src="../../assets/images/produk/anyaman.png" alt="produk" class="product-photo"></td>
-                            <td>Anyaman Campuran</td>
-                            <td>Rp. 500.000</td>
-                            <td>10-01-2021</td>
-                            <td>Toko Tunggal</td>
-                            <td>0812345678</td>
-                            <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
-                          </tr>
+                          
+                          <?php } ?>
                         </tbody>
                       </table>
                 </div>

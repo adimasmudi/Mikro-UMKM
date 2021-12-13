@@ -1,3 +1,29 @@
+<?php
+
+require_once('config.php');
+
+// Program to display URL of current page.
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
+$link = "https";
+else $link = "http";
+
+// Here append the common URL characters.
+$link .= "://";
+
+// Append the host(domain name, ip) to the URL.
+$link .= $_SERVER['HTTP_HOST'];
+
+// Append the requested resource location to the URL
+$link .= $_SERVER['REQUEST_URI'];
+
+$id_produk = explode('?',$link)[1];
+
+$produk = $db->query("SELECT * FROM produk WHERE ID_produk=".$id_produk)->fetch(PDO::FETCH_ASSOC);
+
+
+
+?>
+
 <!doctype html>
 <html lang="en">
   <head> 
@@ -9,6 +35,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../assets/css/style.css">
+
+    <style>
+        .hidden{
+            display:none;
+        }
+    </style>
 
     <title>Detail Produk</title>
   </head>
@@ -29,7 +61,16 @@
         <div class="card mb-3 center" style="max-width: 720px;">
             <div class="row g-0">
               <div class="col-md-6">
-                <img src="..\assets\images\detail\sofa.jpg" class="img-fluid rounded-start" alt="sofa">
+                <img 
+                    src="
+                        <?php
+                        $old_path = $produk["Gambar_produk"];
+                        $new_path = array_slice(explode("/",$old_path),1,sizeof(explode("/",$old_path))-1);
+                        echo join("/",$new_path);
+                        
+                        ?>
+                    " 
+                    alt="<?php echo $produk["Nama_produk"]; ?>" class="img-fluid rounded-start">
               </div>
               <div class="col-md-6">
                 <div class="card-body">
@@ -40,13 +81,18 @@
                             </div>
                         </div>
                         <div class="col">
-                            <h5 class="card-title fw-bold">Toko Tunggal</h5>
+                            <h5 class="card-title fw-bold">
+                                <?php
+                                    $toko = $db->query("SELECT * FROM toko WHERE ID_toko=".$produk["ID_toko"])->fetch(PDO::FETCH_ASSOC);
+                                    echo $toko["Nama_toko"];
+                                ?>
+                            </h5>
                         </div>
                     </div>
                     <hr class="my-20">
-                    <h5 class="card-title fw-bold">Sofa</h5>
-                    <p class="card-text">Total Rp. 500.000</p>
-                    <button type="button" class="btn bttn-primary btn-sm">
+                    <h5 class="card-title fw-bold"><?php echo $produk["Nama_produk"]; ?></h5>
+                    <p class="card-text">Total Rp. <?php echo number_format($produk["Harga_produk"]); ?></p>
+                    <a href="pembayaran.php?<?php echo $produk["ID_produk"]; ?>-<?php echo $produk["ID_toko"]; ?>" class="btn bttn-primary btn-sm">
                         <div class="row justify-content-start align-items-center">
                             <div class="col-sm-1">
                                 <div class="icons">
@@ -57,8 +103,8 @@
                                 Pesan 
                             </div>
                         </div>
-                    </button>
-                    <button type="button" class="btn bttn-red btn-sm">
+                    </a>
+                    <button type="button" class="desc-toggle btn bttn-red btn-sm">
                         <div class="row justify-content-start align-items-center">
                             <div class="col-sm-1">
                                 <div class="icons">
@@ -77,11 +123,11 @@
 
         <br>
 
-        <div class="card center red-card" style="max-width: 720px;">
+        <div class="desc-box card center red-card hidden" style="max-width: 720px;">
             <div class="card-body">
               <h5 class="card-title">Deskripsi Produk</h5>
               <hr class="my-20">
-              <p class="card-text">kursi panjang yang memiliki lengan dan sandaran, berlapis busa dan upholstery (kain dan kulit pelapis). Istilah sofa berasal dari kata sopha yang memiliki arti sebagai tempat duduk seperti dipan (tempat tidur)</p>
+              <p class="card-text"><?php echo $produk["Deskripsi_produk"]; ?></p>
             </div>
         </div>
 
@@ -89,6 +135,15 @@
 
     <br><br>
     <!-- Optional JavaScript; choose one of the two! -->
+
+    <script>
+        const descBox = document.querySelector(".desc-box");
+        const descToggle = document.querySelector(".desc-toggle");
+
+        descToggle.addEventListener("click",function(){
+            descBox.classList.toggle("hidden");
+        });
+    </script>
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

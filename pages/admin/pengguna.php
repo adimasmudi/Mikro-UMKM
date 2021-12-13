@@ -1,3 +1,17 @@
+<?php
+
+require_once('../config.php');
+require_once('../auth.php');
+
+
+$get_pemesanan = $db->query("SELECT * FROM pemesanan");
+
+$pemesanan = $get_pemesanan->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,13 +48,13 @@
                     <div class="row mb-3 ">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Home.png" alt="Dashboard" class="icon me-3">
-                            <span>Dashboard</span>
+                            <a href="dashboard.php"><span>Dashboard</span></a>
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Box.png" alt="Product" class="icon me-3">
-                            <span>Produk</span>
+                            <a href="product_list.php"><span>Produk</span></a>
                             
                         </div>
                     </div>
@@ -48,63 +62,74 @@
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center sidebar-active">
                             <img src="../../assets/images/icons/dashboard/User Male.png" alt="pengguna" class="icon me-3">
-                            <span>Pengguna</span>
+                            <a href="pengguna.php"><span>Pengguna</span></a>
                             
                         </div>
                     </div>
                     <div class="row mb-3">
                         <div class="col d-flex align-items-center">
+                            <img src="../../assets/images/icons/dashboard/Bookmark.png" alt="Feedback" class="icon me-3">
+                            <a href="feedback.php"><span>Feedback</span></a>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col d-flex align-items-center">
                             <img src="../../assets/images/icons/dashboard/Logout.png" alt="Logout" class="icon me-3">
-                            <span>Logout</span>
+                            <a href="../logout.php"><span>Logout</span></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-10 pt-5 pb-5 pe-5 ps-5" style="margin-left:250px;height:100vh">
                 <div class="row pe-5 ps-5 mt-5">
-                    <h3 class="">List Pengguna</h3>
+                    <h3 class="">List Pemesanan Pelanggan</h3>
+                    
                 </div>
                 <div class="row">
                     <table class="product-list table table-striped table-light">
                         <thead>
                           <tr>
-                            <th scope="col">Gambar</th>
-                            <th scope="col">Nama Produk</th>
-                            <th scope="col">Harga</th>
-                            <th scope="col">Tanggal</th>
-                            <th scope="col">Nama Toko</th>
+                            <th scope="col">#</th>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Alamat</th>
+                            <th scope="col">Produk</th>
                             <th scope="col">No hp</th>
                             <th scope="col">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td><img src="../../assets/images/dashboard/foto_produk/sofa.jpg" alt="produk"></td>
-                            <td>Sofa</td>
-                            <td>Rp. 500.000</td>
-                            <td>10-01-2021</td>
-                            <td>Toko Tunggal</td>
-                            <td>082123455786</td>
-                            <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
-                          </tr>
-                          <tr>
-                            <td><img src="../../assets/images/dashboard/foto_produk/Tas_Anyam.jpg" alt="produk"></td>
-                            <td>Tas Anyam</td>
-                            <td>Rp. 45.000</td>
-                            <td>10-01-2021</td>
-                            <td>Toko Jaya</td>
-                            <td>085645306450</td>
-                            <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
-                          </tr>
-                          <tr>
-                            <td><img src="../../assets/images/dashboard/foto_produk/Mangkuk_berdiri.jpg" alt="Produk"></td>
-                            <td>Sofa Berdiri Anyam</td>
-                            <td>Rp. 35.000</td>
-                            <td>10-01-2021</td>
-                            <td>Toko Kerajinan</td>
-                            <td>085784123675</td>
-                            <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
-                          </tr>
+                            <?php
+                                $n = 1;
+                                foreach($pemesanan as $pesan){
+
+                                
+                                    $get_pengguna = $db->prepare("SELECT * FROM pelanggan WHERE ID_pelanggan=:id_pelanggan");
+                                    $pengguna = $get_pengguna->execute([
+                                        ":id_pelanggan" => $pesan["ID_pelanggan"]
+                                    ]);
+
+                                    $pengguna = $get_pengguna->fetch(PDO::FETCH_ASSOC);
+
+                                    $get_produk = $db->prepare("SELECT * FROM produk WHERE ID_produk=:id_produk");
+                                    $produk = $get_produk->execute([
+                                        ":id_produk" => $pesan["ID_produk"]
+                                    ]);
+
+                                    $produk = $get_produk->fetch(PDO::FETCH_ASSOC);
+                                
+                                
+                            ?>
+                            <tr>
+                                <td><?php echo $n; ?></td>
+                                <td><?php echo $pengguna["Nama_pelanggan"]; ?></td>
+                                <td><?php echo $pengguna["Email_pelanggan"]; ?></td>
+                                <td><?php echo $pengguna["Alamat_pelanggan"]; ?></td>
+                                <td><?php echo $produk["Nama_produk"]; ?></td>
+                                <td><?php echo $pengguna["No_hp_pelanggan"]; ?></td>
+                                <td><img src="../../assets/images/icons/product/Delete.png" alt="Delete" style="height:25px;width:25px"></td>
+                            </tr>
+                          <?php $n++;} ?>
                         </tbody>
                       </table>
                 </div>

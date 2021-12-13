@@ -1,3 +1,53 @@
+<?php
+
+
+require_once("config.php");
+
+if(isset($_POST['login'])){
+
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
+    // if($username == 'admin'){
+    //     $sql = "SELECT * FROM admin WHERE Username_admin=:username";
+    // }else{
+    //     $sql = "SELECT * FROM pelanggan WHERE Username_pelanggan=:username";
+    // }
+
+    $sql = "SELECT * FROM toko WHERE Username_toko=:username";
+    
+    $stmt = $db->prepare($sql);
+    
+    // bind parameter ke query
+    $params = array(
+        ":username" => $username
+    );
+
+    $stmt->execute($params);
+
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+
+    // jika user terdaftar
+    if($user){
+        // verifikasi password
+        if(password_verify(trim($password),trim($user["Password_toko"]))){
+            // buat Session
+            session_start();
+            $_SESSION["user"] = $user;
+            // login sukses, alihkan ke halaman index pelanggan
+            header("Location: admin/dashboard.php");
+            
+        }else{
+            echo '<script>Useranme atau password salah</script>';
+        }
+    }else{
+        echo '<script>Useranme atau password salah</script>';
+    }
+}
+?>
+
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -34,7 +84,7 @@
                                 <input type="text" name="username" placeholder="username" class="underline-input mb-4">
                                 <input type="password" name="password" placeholder="password" class="underline-input mb-4">
                                 <input type="submit" name="login" value="Login" class="btn btn-primary w-75 mb-4" style="border-radius:20px;margin:0px auto;">
-                                <p class="text-center">Belum Daftar? <span><a href="daftar.html">Daftar</a></span></p>
+                                <p class="text-center">Belum Daftar? <span><a href="daftar.php">Daftar</a></span></p>
                             </form>
                         </div>
                     </div>
