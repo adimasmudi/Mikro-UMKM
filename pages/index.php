@@ -32,7 +32,7 @@ $product_arr = $produk->fetchAll(PDO::FETCH_ASSOC);
               <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav" style="margin-left:70%">
                   <li class="nav-item">
-                    <a class="nav-link nav-link__active" aria-current="page" href="index.html">Home</a>
+                    <a class="nav-link nav-link__active" aria-current="page" href="index.php">Home</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#daftar">Daftar</a>
@@ -66,7 +66,7 @@ $product_arr = $produk->fetchAll(PDO::FETCH_ASSOC);
                     <p class="text-center">Beberapa produk UMKM</p>
                 </div>
             </div>
-            <div class="row justify-content-evenly">
+            <div class="row justify-content-evenly flex-wrap">
                 <?php
                     foreach($product_arr as $product){
                 ?>
@@ -113,16 +113,16 @@ $product_arr = $produk->fetchAll(PDO::FETCH_ASSOC);
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tambah Kategori</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Daftar Produk lainnya</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <form action="" method="POST">
                                     <div class="modal-body">
-                                        <input type="text" class="form-control" placeholder="kategori" name="kategori">
+                                        <p>Belum ada produk yang lain</p>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                        <input type="submit" class="btn btn-primary" name="simpan" value="simpan">
+                                        
                                     </div>
                                 </form>
                             </div>

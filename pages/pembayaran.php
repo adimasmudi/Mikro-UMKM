@@ -178,7 +178,7 @@ if(isset($_POST["checkout"])){
                                 </div>
                                 <form action="" method="POST">
                                     <div class="modal-body">
-                                        <span>Apakah anda yakin ingin checkout? anda anda akan kami simpan dan kami akan menghubungi anda untuk pengiriman barangnya</span>
+                                        <span>Apakah anda yakin ingin checkout? data anda akan kami simpan dan kami akan menghubungi anda untuk pengiriman barangnya</span>
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>

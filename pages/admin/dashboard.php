@@ -5,6 +5,8 @@ require_once('../auth.php');
 $stmt = $db->query("SELECT * FROM kategori");
 $kategori = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
+
 ?>
 <!doctype html>
 <html lang="en">
